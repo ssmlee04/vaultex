@@ -1,6 +1,6 @@
 defmodule Vaultex.Read do
   def handle(key, state = %{token: token}) do
-    request(:get, "#{state.url}#{key}", %{}, [{"X-Vault-Token", token}])
+    request(:get, "#{state.url}#{key}", %{}, [{"X-Vault-Token", token}, {"X-Vault-Namespace", "admin"}])
     |> handle_response(state)
   end
 
